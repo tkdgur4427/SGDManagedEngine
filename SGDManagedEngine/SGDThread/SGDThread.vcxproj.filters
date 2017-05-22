@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="3rd Library">
+      <UniqueIdentifier>{b95f846e-6e72-4680-a2df-8b2715bd5759}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src">
+      <UniqueIdentifier>{c6a79df8-8f2b-4d85-bd04-d4296cd4d887}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="blockingconcurrentqueue.h">
+      <Filter>3rd Library</Filter>
+    </ClInclude>
+    <ClInclude Include="concurrentqueue.h">
+      <Filter>3rd Library</Filter>
+    </ClInclude>
+    <ClInclude Include="SGDFiberContext.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="SGDTask.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="SGDTaskQueue.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="SGDTaskScheduler.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="SGDThreadPCH.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="SGDThreadUtil.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="SGDWaitFiberContextQueue.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="SGDWorkerThread.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="SGDFiberContext.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="SGDTask.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="SGDTaskQueue.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="SGDTaskScheduler.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="SGDThreadPCH.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="SGDThreadWindow.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="SGDWaitFiberContextQueue.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="SGDWorkerThread.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,370 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C23E4D54-274D-415D-86AC-DD71C364BE47}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SGDManagedEngine</RootNamespace>
+    <AssemblyName>SGDManagedEngine</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;SGD_DX12</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;SGD_DX12</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AssimpNet, Version=3.3.1.0, Culture=neutral, PublicKeyToken=0d51b391f59f42a6, processorArchitecture=MSIL">
+      <HintPath>..\packages\AssimpNet.3.3.1\lib\net45\AssimpNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ImGui.NET, Version=0.1.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImGui.NET.0.1.5\lib\netstandard1.1\ImGui.NET.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="SharpDX, Version=3.0.2.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.3.0.2\lib\net45\SharpDX.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SharpDX.D3DCompiler, Version=3.0.2.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.D3DCompiler.3.0.2\lib\net45\SharpDX.D3DCompiler.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SharpDX.Direct2D1, Version=3.0.2.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.Direct2D1.3.0.2\lib\net45\SharpDX.Direct2D1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SharpDX.Direct3D12, Version=3.0.2.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.Direct3D12.3.0.2\lib\net45\SharpDX.Direct3D12.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SharpDX.DXGI, Version=3.0.2.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.DXGI.3.0.2\lib\net45\SharpDX.DXGI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SharpDX.Mathematics, Version=3.0.2.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.Mathematics.3.0.2\lib\net45\SharpDX.Mathematics.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.1.1\lib\portable-net45+win8+wp8+wpa81\System.Numerics.Vectors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Debugger\SGDVisualDebugger.cs" />
+    <Compile Include="InputManager\SGDInputManager.cs" />
+    <Compile Include="InputManager\SGDKeys.cs" />
+    <Compile Include="InputManager\SGDMouseButtonMovingEvent.cs" />
+    <Compile Include="InputManager\SGDMouseButtons.cs" />
+    <Compile Include="InputManager\SGDMouseStates.cs" />
+    <Compile Include="Math\SGDMathCommon.cs" />
+    <Compile Include="Model\Image\SGDImageWrapper.cs" />
+    <Compile Include="Model\SGDAssetContext.cs" />
+    <Compile Include="Object\Animation\SGDAnimationAsset.cs" />
+    <Compile Include="Object\Animation\SGDAnimComposite.cs" />
+    <Compile Include="Object\Animation\SGDAnimCompositeBase.cs" />
+    <Compile Include="Object\Animation\SGDAnimInstance.cs" />
+    <Compile Include="Object\Animation\SGDAnimMontage.cs" />
+    <Compile Include="Object\Animation\SGDAnimMontageInstance.cs" />
+    <Compile Include="Object\Animation\SGDAnimNodeBase.cs" />
+    <Compile Include="Object\Animation\SGDAnimSequence.cs" />
+    <Compile Include="Object\Animation\SGDAnimSequenceBase.cs" />
+    <Compile Include="Object\Animation\SGDAnimTrack.cs" />
+    <Compile Include="Object\SGDMeshComponent.cs" />
+    <Compile Include="Object\SGDObjectGlobalDefinitions.cs" />
+    <Compile Include="Object\SGDPrimitiveComponent.cs" />
+    <Compile Include="Object\SGDSceneComponent.cs" />
+    <Compile Include="Object\SGDSkeletalMeshComponent.cs" />
+    <Compile Include="Object\SGDSkeletalMeshObject.cs" />
+    <Compile Include="Object\SGDSkeletalMeshObjectGPUSkin.cs" />
+    <Compile Include="Object\SGDSkeleton.cs" />
+    <Compile Include="Object\SGDSkeletalMesh.cs" />
+    <Compile Include="Object\SGDSkeletalMeshResource.cs" />
+    <Compile Include="Object\SGDSkelMeshChunk.cs" />
+    <Compile Include="Object\SGDSkelMeshSection.cs" />
+    <Compile Include="Object\SGDSkinnedComponent.cs" />
+    <Compile Include="Object\SGDStaticLODModel.cs" />
+    <Compile Include="Object\SGDStaticMesh.cs" />
+    <Compile Include="Model\SGDAssimpImporter.cs" />
+    <Compile Include="Object\SGDActor.cs" />
+    <Compile Include="Object\SGDActorComponent.cs" />
+    <Compile Include="Object\SGDObject.cs" />
+    <Compile Include="Object\SGDStaticMeshComponent.cs" />
+    <Compile Include="Object\SGDTransform.cs" />
+    <Compile Include="Profiler\SGDInGameUIEditor.cs" />
+    <Compile Include="Renderer\Camera\SGDCamera.cs" />
+    <Compile Include="Renderer\Camera\SGDCameraController.cs" />
+    <Compile Include="Renderer\SGDGpuSkinVertexFactory.cs" />
+    <Compile Include="Renderer\SGDRenderUtils.cs" />
+    <Compile Include="RHI\DX12\API\SGDDX12BlendState.cs" />
+    <Compile Include="RHI\DX12\API\SGDDX12InputLayout.cs" />
+    <Compile Include="RHI\DX12\API\SGDDX12QueryHeap.cs" />
+    <Compile Include="RHI\DX12\API\SGDDX12RasterizerState.cs" />
+    <Compile Include="RHI\DX12\API\SGDCommandListFence.cs" />
+    <Compile Include="RHI\DX12\API\SGDDataStreamer.cs" />
+    <Compile Include="RHI\DX12\API\SGDDX12AsyncCommandQueue.cs" />
+    <Compile Include="RHI\DX12\API\SGDDX12CommandList.cs" />
+    <Compile Include="RHI\DX12\API\SGDDX12DepthStencilState.cs" />
+    <Compile Include="RHI\DX12\API\SGDDX12DescriptorHeap.cs" />
+    <Compile Include="RHI\DX12\API\SGDDX12Device.cs" />
+    <Compile Include="RHI\DX12\API\SGDDX12PSO.cs" />
+    <Compile Include="RHI\DX12\API\SGDDX12RootSignature.cs" />
+    <Compile Include="RHI\DX12\API\SGDDX12SamplerState.cs" />
+    <Compile Include="RHI\DX12\API\SGDDX12Shader.cs" />
+    <Compile Include="RHI\DX12\API\SGDDX12SissorRect.cs" />
+    <Compile Include="RHI\DX12\API\SGDDX12View.cs" />
+    <Compile Include="RHI\DX12\API\SGDDX12Viewport.cs" />
+    <Compile Include="RHI\DX12\API\SGDGlobalDX12Definitions.cs" />
+    <Compile Include="RHI\DX12\API\SGDSwapChain.cs" />
+    <Compile Include="RHI\DX12\Device\SGDDX12DeviceContext.cs" />
+    <Compile Include="RHI\DX12\Device\SGDDX12Object.cs" />
+    <Compile Include="RHI\DX12\Misc\SGDDX12PipelineState.cs" />
+    <Compile Include="RHI\DX12\Resource\SGDDX12Buffer.cs" />
+    <Compile Include="RHI\DX12\Resource\SGDDX12Resource.cs" />
+    <Compile Include="RHI\DX12\Resource\SGDDX12Texture1D.cs" />
+    <Compile Include="RHI\DX12\Resource\SGDDX12Texture2D.cs" />
+    <Compile Include="RHI\DX12\Resource\SGDDX12Texture3D.cs" />
+    <Compile Include="RHI\Gen2Layer\DirectX12\SGDGpuResourceHandleDX12.cs" />
+    <Compile Include="RHI\Gen2Layer\DirectX12\SGDCommandContextDX12.cs" />
+    <Compile Include="RHI\Gen2Layer\DirectX12\SGDCommandListManagerDX12.cs" />
+    <Compile Include="RHI\Gen2Layer\DirectX12\SGDCommandQueueDX12.cs" />
+    <Compile Include="RHI\Gen2Layer\DirectX12\SGDCommandSignatureDX12.cs" />
+    <Compile Include="RHI\Gen2Layer\DirectX12\SGDDescriptorAllocatorDX12.cs" />
+    <Compile Include="RHI\Gen2Layer\DirectX12\SGDDynamicDescriptorHeapDX12.cs" />
+    <Compile Include="RHI\Gen2Layer\DirectX12\SGDGen2LayerDX12.cs" />
+    <Compile Include="RHI\Gen2Layer\DirectX12\SGDGpuFenceDX12.cs" />
+    <Compile Include="RHI\Gen2Layer\DirectX12\SGDGpuHeapDX12.cs" />
+    <Compile Include="RHI\Gen2Layer\DirectX12\SGDGpuResAllocPageDX12.cs" />
+    <Compile Include="RHI\Gen2Layer\DirectX12\SGDGpuResourceDX12.cs" />
+    <Compile Include="RHI\Gen2Layer\DirectX12\SGDGpuTextureDX12.cs" />
+    <Compile Include="RHI\Gen2Layer\DirectX12\SGDGpuViewsDX12.cs" />
+    <Compile Include="RHI\Gen2Layer\DirectX12\SGDInputLayoutDX12.cs" />
+    <Compile Include="RHI\Gen2Layer\DirectX12\SGDPipelineStateObjectDX12.cs" />
+    <Compile Include="RHI\Gen2Layer\DirectX12\SGDRootSignatureDX12.cs" />
+    <Compile Include="RHI\Gen2Layer\Memory\SGDGpuHeap.cs" />
+    <Compile Include="RHI\Gen2Layer\Memory\SGDGpuMemoryManager.cs" />
+    <Compile Include="RHI\Gen2Layer\Memory\SGDGpuResAllocPolicy.cs" />
+    <Compile Include="RHI\Gen2Layer\Memory\SGDGpuResourceHandle.cs" />
+    <Compile Include="RHI\Gen2Layer\SGDCommandContext.cs" />
+    <Compile Include="RHI\Gen2Layer\SGDCommandContextManager.cs" />
+    <Compile Include="RHI\Gen2Layer\SGDCommandListManager.cs" />
+    <Compile Include="RHI\Gen2Layer\SGDCommandQueue.cs" />
+    <Compile Include="RHI\Gen2Layer\SGDDescriptorAllocator.cs" />
+    <Compile Include="RHI\Gen2Layer\SGDDynamicDescriptorHeap.cs" />
+    <Compile Include="RHI\Gen2Layer\SGDGen2Layer.cs" />
+    <Compile Include="RHI\Gen2Layer\SGDGpuBuffer.cs" />
+    <Compile Include="RHI\Gen2Layer\SGDGpuFence.cs" />
+    <Compile Include="RHI\Gen2Layer\SGDGpuLinearAllocator.cs" />
+    <Compile Include="RHI\Gen2Layer\SGDGpuMemoryCommon.cs" />
+    <Compile Include="RHI\Gen2Layer\Memory\SGDGpuMemoryPool.cs" />
+    <Compile Include="RHI\Gen2Layer\SGDGpuResAllocPage.cs" />
+    <Compile Include="RHI\Gen2Layer\SGDGpuResource.cs" />
+    <Compile Include="RHI\Gen2Layer\SGDGpuTexture.cs" />
+    <Compile Include="RHI\Gen2Layer\SGDInputLayout.cs" />
+    <Compile Include="RHI\Gen2Layer\SGDPipelineStateObject.cs" />
+    <Compile Include="RHI\Gen2Layer\SGDRootSignature.cs" />
+    <Compile Include="RHI\Gen2Layer\SGDGpuViews.cs" />
+    <Compile Include="RHI\SGDGeneralBuffer.cs" />
+    <Compile Include="Renderer\SGDGPUResourceManager.cs" />
+    <Compile Include="Renderer\SGDLocalVertexFactory.cs" />
+    <Compile Include="Renderer\SGDMaterial.cs" />
+    <Compile Include="Renderer\SGDShaderManager.cs" />
+    <Compile Include="Renderer\SGDTexture2DResource.cs" />
+    <Compile Include="Renderer\SGDTextureResource.cs" />
+    <Compile Include="Renderer\SGDVertexFactory.cs" />
+    <Compile Include="Renderer\Shader\SGDBasePassShaders.cs" />
+    <Compile Include="Renderer\Shader\SGDShaderCommon.cs" />
+    <Compile Include="Renderer\Shader\SGDShaderType.cs" />
+    <Compile Include="RHI\SGDRHIDefinition.cs" />
+    <Compile Include="RHI\SGDIndexBuffer.cs" />
+    <Compile Include="RHI\SGDResource.cs" />
+    <Compile Include="Renderer\Shader\SGDShader.cs" />
+    <Compile Include="RHI\SGDShaderCompileHelper.cs" />
+    <Compile Include="RHI\SGDTexture1D.cs" />
+    <Compile Include="RHI\SGDTexture2D.cs" />
+    <Compile Include="RHI\SGDTexture3D.cs" />
+    <Compile Include="RHI\SGDVertexBuffer.cs" />
+    <Compile Include="RHI\SGDVertexDeclaration.cs" />
+    <Compile Include="SGDFrustum.cs" />
+    <Compile Include="SGDGameEngineProxy.cs" />
+    <Compile Include="SGDGameLoopService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SGDGlobal.cs" />
+    <Compile Include="SGDManagedEngine.cs" />
+    <Compile Include="SGDManagedRenderer.cs" />
+    <Compile Include="Utility\SGDDeepCopyable.cs" />
+    <Compile Include="Utility\SGDObjectCopier.cs" />
+    <Compile Include="World\Scene\SGDDepthPriorityGroup.cs" />
+    <Compile Include="World\Scene\SGDDrawingPolicy.cs" />
+    <Compile Include="World\Scene\SGDLightSceneInfo.cs" />
+    <Compile Include="World\Scene\SGDPrimitiveSceneInfo.cs" />
+    <Compile Include="World\Scene\SGDSceneInterface.cs" />
+    <Compile Include="World\Scene\SGDStaticMeshBatch.cs" />
+    <Compile Include="World\Scene\SGDStaticMeshDrawList.cs" />
+    <Compile Include="World\SGDLevel.cs" />
+    <Compile Include="World\SGDWorld.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ThirdParty\Atf\Framework\Atf.Core\Atf.Core.vs2010.csproj">
+      <Project>{9d1835b6-d1c2-44ba-bae1-05c6ec442d2f}</Project>
+      <Name>Atf.Core.vs2010</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ThirdParty\Atf\Framework\Atf.Gui.WinForms\Atf.Gui.WinForms.vs2010.csproj">
+      <Project>{7c36a258-9102-420d-b80a-5eb5717644b6}</Project>
+      <Name>Atf.Gui.WinForms.vs2010</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ThirdParty\Atf\Framework\Atf.Gui.Wpf\Atf.Gui.Wpf.vs2010.csproj">
+      <Project>{050fc659-553f-4911-a609-5ba1be4edbf8}</Project>
+      <Name>Atf.Gui.Wpf.vs2010</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ThirdParty\Atf\Framework\Atf.Gui\Atf.Gui.vs2010.csproj">
+      <Project>{4765c2a7-f989-40db-bc12-fcd67025b93f}</Project>
+      <Name>Atf.Gui.vs2010</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ThirdParty\LevelEditorCore\LevelEditorCore.vs2010.csproj">
+      <Project>{8eaaa859-349e-4605-a0af-118017881212}</Project>
+      <Name>LevelEditorCore.vs2010</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SGDManagedEngineWrapper\SGDManagedEngineWrapper.vcxproj">
+      <Project>{35f9df50-421f-4ffa-9636-5b4f75aa45d7}</Project>
+      <Name>SGDManagedEngineWrapper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Assets\mitsuba-sphere.obj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\mitsuba.obj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\special_alduindeathagony.fbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\alduin.JPG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\alduin_n.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shader.hlsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\SGDBasePassCommon.hlsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\SGDBasePassPS.hlsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\SGDBasePassVS.hlsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\SGDGpuSkinVertexFactory.hlsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\SGDLocalVertexFactory.hlsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Compile Include="World\Scene\SGDScene.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="RHI\Gen2Layer\Allocator\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\AssimpNet.3.3.1\build\AssimpNet.targets" Condition="Exists('..\packages\AssimpNet.3.3.1\build\AssimpNet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\AssimpNet.3.3.1\build\AssimpNet.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\AssimpNet.3.3.1\build\AssimpNet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
