@@ -174,7 +174,6 @@
     <Compile Include="Renderer\Camera\SGDCamera.cs" />
     <Compile Include="Renderer\Camera\SGDCameraController.cs" />
     <Compile Include="Renderer\SGDGpuSkinVertexFactory.cs" />
-    <Compile Include="Renderer\Renewal\SGDRendererBase.cs" />
     <Compile Include="Renderer\SGDRenderUtils.cs" />
     <Compile Include="RHI\DX12\API\SGDDX12BlendState.cs" />
     <Compile Include="RHI\DX12\API\SGDDX12InputLayout.cs" />
@@ -312,12 +311,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Assets\mitsuba-sphere.obj">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Assets\mitsuba.obj">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="Assets\special_alduindeathagony.fbx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -351,6 +344,7 @@
     <Compile Include="World\Scene\SGDScene.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Renderer\Renewal\" />
     <Folder Include="RHI\DX11\" />
     <Folder Include="RHI\Gen2Layer\Allocator\" />
   </ItemGroup>
