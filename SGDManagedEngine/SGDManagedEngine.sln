@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGDManagedEngine", "SGDManagedEngine\SGDManagedEngine.csproj", "{C23E4D54-274D-415D-86AC-DD71C364BE47}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -37,6 +37,10 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SGDCore", "SGDCore\SGDCore.vcxproj", "{CF7E96C8-B2FA-459F-9B95-3ED24AEE1EFB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "c++ libraries", "c++ libraries", "{E602495B-58AE-47CA-AA87-608E0F0E75DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGDRayTracer", "SGDRayTracer\SGDRayTracer.csproj", "{DAF546D4-71D7-4771-BE6A-43A35BF6F575}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGDUtil", "SGDUtil\SGDUtil.csproj", "{9DB98455-82A1-43E3-8342-9BCFCE1F1233}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -172,6 +176,30 @@ Global
 		{CF7E96C8-B2FA-459F-9B95-3ED24AEE1EFB}.Release|x64.Build.0 = Release|x64
 		{CF7E96C8-B2FA-459F-9B95-3ED24AEE1EFB}.Release|x86.ActiveCfg = Release|Win32
 		{CF7E96C8-B2FA-459F-9B95-3ED24AEE1EFB}.Release|x86.Build.0 = Release|Win32
+		{DAF546D4-71D7-4771-BE6A-43A35BF6F575}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAF546D4-71D7-4771-BE6A-43A35BF6F575}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAF546D4-71D7-4771-BE6A-43A35BF6F575}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DAF546D4-71D7-4771-BE6A-43A35BF6F575}.Debug|x64.Build.0 = Debug|Any CPU
+		{DAF546D4-71D7-4771-BE6A-43A35BF6F575}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DAF546D4-71D7-4771-BE6A-43A35BF6F575}.Debug|x86.Build.0 = Debug|Any CPU
+		{DAF546D4-71D7-4771-BE6A-43A35BF6F575}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAF546D4-71D7-4771-BE6A-43A35BF6F575}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAF546D4-71D7-4771-BE6A-43A35BF6F575}.Release|x64.ActiveCfg = Release|Any CPU
+		{DAF546D4-71D7-4771-BE6A-43A35BF6F575}.Release|x64.Build.0 = Release|Any CPU
+		{DAF546D4-71D7-4771-BE6A-43A35BF6F575}.Release|x86.ActiveCfg = Release|Any CPU
+		{DAF546D4-71D7-4771-BE6A-43A35BF6F575}.Release|x86.Build.0 = Release|Any CPU
+		{9DB98455-82A1-43E3-8342-9BCFCE1F1233}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DB98455-82A1-43E3-8342-9BCFCE1F1233}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DB98455-82A1-43E3-8342-9BCFCE1F1233}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9DB98455-82A1-43E3-8342-9BCFCE1F1233}.Debug|x64.Build.0 = Debug|Any CPU
+		{9DB98455-82A1-43E3-8342-9BCFCE1F1233}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9DB98455-82A1-43E3-8342-9BCFCE1F1233}.Debug|x86.Build.0 = Debug|Any CPU
+		{9DB98455-82A1-43E3-8342-9BCFCE1F1233}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DB98455-82A1-43E3-8342-9BCFCE1F1233}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DB98455-82A1-43E3-8342-9BCFCE1F1233}.Release|x64.ActiveCfg = Release|Any CPU
+		{9DB98455-82A1-43E3-8342-9BCFCE1F1233}.Release|x64.Build.0 = Release|Any CPU
+		{9DB98455-82A1-43E3-8342-9BCFCE1F1233}.Release|x86.ActiveCfg = Release|Any CPU
+		{9DB98455-82A1-43E3-8342-9BCFCE1F1233}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -185,5 +213,8 @@ Global
 		{30156A9F-ED52-463D-8DDE-18F6E5F4C24D} = {E602495B-58AE-47CA-AA87-608E0F0E75DD}
 		{9582924D-D7C9-402A-8C59-C8842F5281FE} = {E602495B-58AE-47CA-AA87-608E0F0E75DD}
 		{CF7E96C8-B2FA-459F-9B95-3ED24AEE1EFB} = {E602495B-58AE-47CA-AA87-608E0F0E75DD}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3A4BA50B-3307-49F9-B34C-A0E31C3928DE}
 	EndGlobalSection
 EndGlobal
