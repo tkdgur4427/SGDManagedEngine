@@ -11,7 +11,25 @@ namespace SGDRayTracer
     /// </summary>
     public class H1RayTracerSystem
     {
-        public H1RayTracerSystem()
+        /// <summary>
+        /// singlton for H1RayTracerSystem
+        /// </summary>
+        protected static H1RayTracerSystem Instance;
+
+        public static H1RayTracerSystem Singleton
+        {
+            get
+            {
+                if (Instance != null)
+                {
+                    Instance = new H1RayTracerSystem();
+                }
+                return Instance;
+            }
+        }
+
+        // disable creation of ray tracer system
+        protected H1RayTracerSystem()
         {
 
         }

@@ -46,6 +46,13 @@ namespace SGDRayTracer
             get; private set;
         }
 
+        // methods to override
+        public abstract void Activate();
+        public abstract void Deactivate();
+
+        public abstract void Initialize();
+        public abstract void Destroy();
+
         public H1ComponentDescriptor Descriptor
         {
             get { return ComponentDescriptor; }
