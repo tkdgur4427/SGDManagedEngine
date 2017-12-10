@@ -110,9 +110,12 @@ namespace SGDRayTracer
             // create camera matrix (view matrix)
             H1Vector3 UpVector = new H1Vector3(0, 0, 1);
             H1Vector3 RightVector = H1Vector3.Cross(LookAt, UpVector);
+            UpVector = H1Vector3.Cross(RightVector, LookAt);
 
             ViewMatrix = new H1Matrix();
-            ViewMatrix
+            ViewMatrix.Look = LookAt;
+            ViewMatrix.Right = RightVector;
+            ViewMatrix.Up = UpVector;
         }
 
         public bool SetViewFrustum(float InNearDist, float InFarDist, float InFov, float InScreenResolutionX, float InScreenResolutionY)

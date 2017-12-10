@@ -115,7 +115,7 @@ namespace SGDUtil
             Data = new Vector3(X, Y, Z);
         }
 
-        protected H1Vector3(Vector3 InData)
+        public H1Vector3(Vector3 InData)
         {
             Data = InData;
         }

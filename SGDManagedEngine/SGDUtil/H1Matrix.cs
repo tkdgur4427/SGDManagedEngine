@@ -12,7 +12,7 @@ namespace SGDUtil
     {
         public H1Matrix()
         {
-            Data = new Matrix();
+            Data = Matrix.Identity;
         }
 
         protected H1Matrix (Matrix InData)
@@ -22,7 +22,34 @@ namespace SGDUtil
 
         public H1Vector3 Look
         {
-            get { return new H1Vector3(Data.Down); }
+            get { return new H1Vector3(Data.Up); }
+            set
+            {
+                Data.Up = value.Data;
+            }
+        }
+
+        public H1Vector3 Right
+        {
+            get { return new H1Vector3(Data.Right); }
+            set
+            {
+                Data.Right = value.Data;
+            }
+        }
+
+        public H1Vector3 Up
+        {
+            get { return new H1Vector3(Data.Backward); }
+            set
+            {
+                Data.Backward = value.Data;
+            }
+        }
+
+        public static H1Matrix Invert(H1Matrix value)
+        {
+            return new H1Matrix(Matrix.Invert(value.Data));
         }
 
         public static H1Matrix operator +(H1Matrix value)
