@@ -120,6 +120,27 @@ namespace SGDUtil
             Data = InData;
         }
 
+        public float X
+        {
+            get { return Data.X; }
+        }
+
+        public float Y
+        {
+            get { return Data.Y; }
+        }
+
+        public float Z
+        {
+            get { return Data.Z; }
+        }
+
+        // vector indexers
+        public float this[Int32 Index]
+        {
+            get { return Data[Index]; }
+        }
+
         public static H1Vector3 Normalize(H1Vector3 value)
         {
             return new H1Vector3(Vector3.Normalize(value.Data));
@@ -130,6 +151,11 @@ namespace SGDUtil
             Vector3 Result;
             Vector3.Transform(ref vector.Data, ref transform.Data, out Result);
             return new H1Vector3(Result);
+        }
+
+        public static float Dot(H1Vector3 left, H1Vector3 right)
+        {
+            return Vector3.Dot(left.Data, right.Data);
         }
 
         public static H1Vector3 Cross(H1Vector3 left, H1Vector3 right)

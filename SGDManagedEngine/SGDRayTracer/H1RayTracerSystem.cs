@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using SGDUtil;
+
 namespace SGDRayTracer
 {
     /// <summary>
@@ -20,7 +22,7 @@ namespace SGDRayTracer
         {
             get
             {
-                if (Instance != null)
+                if (Instance == null)
                 {
                     Instance = new H1RayTracerSystem();
                 }
@@ -52,6 +54,30 @@ namespace SGDRayTracer
             {
                 RayTracerComponents.Remove(InComponent);
             }            
+        }
+
+        public void RayCast(H1Ray[] InRays, ref H1RenderTarget OutRenderTarget)
+        {
+            Int32 Index = 0;
+
+            foreach (H1Ray Ray in InRays)
+            {
+                float T0 = float.MaxValue;
+                foreach (H1RayTracerComponent Component in RayTracerComponents)
+                {
+                    float CurrT0, CurrT1;
+                    if (Component.IsCollide(Ray, out CurrT0, out CurrT1))
+                    {
+                        if (T0 > CurrT0)
+                        {
+                            OutRenderTarget[Index] = new H1Color(1, 0, 0, 1);
+                            T0 = CurrT0;
+                        }                        
+                    }
+                }
+
+                Index++;
+            }
         }
 
         // components which need to be handled by ray tracer render world

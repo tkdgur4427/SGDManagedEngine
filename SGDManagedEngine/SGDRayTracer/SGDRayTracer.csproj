@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,7 +46,6 @@
     <Compile Include="H1CPURayTracer.cs" />
     <Compile Include="H1Entity.cs" />
     <Compile Include="H1RayTracer.cs" />
-    <Compile Include="H1Ray.cs" />
     <Compile Include="H1RayTracerComponent.cs" />
     <Compile Include="H1RayTracerSystem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

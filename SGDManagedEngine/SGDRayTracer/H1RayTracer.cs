@@ -20,6 +20,31 @@ namespace SGDRayTracer
 
             // allocate pixels in screen
             Pixels = new H1Color[Width * Height];
+            // clear the render target
+            Clear();
+        }
+
+        public H1Color this[Int32 X, Int32 Y]
+        {
+            get { return Pixels[Y * Width + X]; }
+            set { Pixels[Y * Width + X] = value; }
+        }
+
+        public H1Color this[Int32 Index]
+        {
+            get { return Pixels[Index]; }
+            set { Pixels[Index] = value; }
+        }
+
+        public void Clear()
+        {
+            for (Int32 PixelY = 0; PixelY < Height; ++PixelY)
+            {
+                for (Int32 PixelX = 0; PixelX < Width; ++PixelX)
+                {
+                    Pixels[PixelY * Width + PixelX] = new H1Color(0, 0, 0, 1);
+                }
+            }
         }
 
         public Int32 Width { get; private set; }
@@ -51,7 +76,7 @@ namespace SGDRayTracer
             // create back buffer
             BackBuffer = new H1RenderTarget(InWidth, InHeight);
         }
-
+                
         // back buffer
         protected H1RenderTarget BackBuffer;
     }

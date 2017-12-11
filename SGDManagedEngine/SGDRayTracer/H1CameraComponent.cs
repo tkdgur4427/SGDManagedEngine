@@ -109,13 +109,15 @@ namespace SGDRayTracer
 
             // create camera matrix (view matrix)
             H1Vector3 UpVector = new H1Vector3(0, 0, 1);
-            H1Vector3 RightVector = H1Vector3.Cross(LookAt, UpVector);
-            UpVector = H1Vector3.Cross(RightVector, LookAt);
+            H1Vector3 RightVector = H1Vector3.Normalize(H1Vector3.Cross(LookAt, UpVector));
+            UpVector = H1Vector3.Normalize(H1Vector3.Cross(RightVector, LookAt));
 
             ViewMatrix = new H1Matrix();
             ViewMatrix.Look = LookAt;
             ViewMatrix.Right = RightVector;
             ViewMatrix.Up = UpVector;
+
+            ViewMatrix.TranslationVector = InPosition;
         }
 
         public bool SetViewFrustum(float InNearDist, float InFarDist, float InFov, float InScreenResolutionX, float InScreenResolutionY)
@@ -140,7 +142,7 @@ namespace SGDRayTracer
             H1Vector3 LocalX = new H1Vector3(1, 0, 0);
             H1Vector3 LocalZ = new H1Vector3(0, 0, 1);
 
-            H1Vector3 NearPlanePosition = Position + ViewFrustum.NearDistance * LookAt;
+            H1Vector3 NearPlanePosition = new H1Vector3(0, 0, 0) + ViewFrustum.NearDistance * LookAt;
 
             float HalfHeightForNearPlane = ViewFrustum.NearDistance * (float)Math.Tan(ViewFrustum.Fov);
             float HalfWidthForNearPlane = ViewFrustum.ScreenRatio * HalfHeightForNearPlane;
@@ -155,7 +157,7 @@ namespace SGDRayTracer
             ViewFrustum.LocalFrustumVertices[NearPlaneStartIndex + 3] = NearPlanePosition
                 + HalfWidthForNearPlane * (LocalX) + HalfHeightForNearPlane * (LocalZ);
 
-            H1Vector3 FarPlanePosition = Position + ViewFrustum.FarDistance * LookAt;
+            H1Vector3 FarPlanePosition = new H1Vector3(0, 0, 0) + ViewFrustum.FarDistance * LookAt;
 
             float HalfHeightForFarPlane = ViewFrustum.FarDistance * (float)Math.Tan(ViewFrustum.Fov);
             float HalfWidthForFarPlane = ViewFrustum.ScreenRatio * HalfHeightForFarPlane;

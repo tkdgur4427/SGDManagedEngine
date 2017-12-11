@@ -46,8 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="H1Bound.cs" />
     <Compile Include="H1Color.cs" />
     <Compile Include="H1Matrix.cs" />
+    <Compile Include="H1Plane.cs" />
+    <Compile Include="H1PrimitiveIntersection.cs" />
+    <Compile Include="H1Ray.cs" />
     <Compile Include="H1Vector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

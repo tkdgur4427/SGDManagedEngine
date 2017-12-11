@@ -17,7 +17,7 @@ namespace WpfApp
             // testing
             H1CPURayTracerSettings Settings = new H1CPURayTracerSettings();
             Settings.Width = 800;
-            Settings.Width = 600;
+            Settings.Height = 600;
 
             H1CPURayTracer RayTracer = new H1CPURayTracer(Settings);
             RayTracer.Render();

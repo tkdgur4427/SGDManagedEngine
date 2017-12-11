@@ -47,6 +47,12 @@ namespace SGDUtil
             }
         }
 
+        public H1Vector3 TranslationVector
+        {
+            get { return new H1Vector3(Data.TranslationVector); }
+            set { Data.TranslationVector = value.Data; }
+        }
+
         public static H1Matrix Invert(H1Matrix value)
         {
             return new H1Matrix(Matrix.Invert(value.Data));
