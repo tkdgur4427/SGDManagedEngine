@@ -38,30 +38,36 @@ namespace SGDManagedEngine.SGD
             H1Level persistentLevel = m_World.GetLevel(lvIndex);
             m_World.PersistentLevel = persistentLevel;
 
-            // create temporary actor
-            H1Actor testActor = new H1Actor();
-            H1StaticMeshComponent staticMeshComponent = new H1StaticMeshComponent();
-            staticMeshComponent.StaticMesh = new H1StaticMesh(H1Global<H1AssimpImporter>.Instance.asset.GetModel(0));
-            testActor.AddActorComponent<H1StaticMeshComponent>(staticMeshComponent);
+            H1AssetContext AssetContext = H1Global<H1AssimpImporter>.Instance.asset;
+            if (AssetContext != null)
+            {
+                H1ModelContext ModelContext = H1Global<H1AssimpImporter>.Instance.asset.GetModel(0);
 
-            // create temporary skeletal mesh component
-            H1SkeletalMeshComponent skeletalMeshComponent = new H1SkeletalMeshComponent();
-            skeletalMeshComponent.SkeletalMesh = new H1SkeletalMesh();
-            H1StaticLODModel staticLODModelRef = skeletalMeshComponent.SkeletalMesh.PrepareProcessAssetContext(H1Global<H1AssimpImporter>.Instance.asset.GetModel(0).SkeletalContexts[0]);
-            skeletalMeshComponent.SkeletalMesh.ProcessAssetContext(staticLODModelRef, H1Global<H1AssimpImporter>.Instance.asset.GetModel(0).Meshes.ToArray(), H1Global<H1AssimpImporter>.Instance.asset.GetModel(0).SkeletalContexts[0]);
-            skeletalMeshComponent.AnimScriptInstance.ProcessAnimationContext(H1Global<H1AssimpImporter>.Instance.asset.GetModel(0).AnimationContext);
+                // create temporary actor
+                H1Actor testActor = new H1Actor();
+                H1StaticMeshComponent staticMeshComponent = new H1StaticMeshComponent();
+                staticMeshComponent.StaticMesh = new H1StaticMesh(ModelContext);
+                testActor.AddActorComponent<H1StaticMeshComponent>(staticMeshComponent);
 
-            // generate skeletalmeshobject
-            skeletalMeshComponent.GenerateSkeleltalMeshObjectGpuSkin();
+                // create temporary skeletal mesh component
+                H1SkeletalMeshComponent skeletalMeshComponent = new H1SkeletalMeshComponent();
+                skeletalMeshComponent.SkeletalMesh = new H1SkeletalMesh();
+                H1StaticLODModel staticLODModelRef = skeletalMeshComponent.SkeletalMesh.PrepareProcessAssetContext(ModelContext.SkeletalContexts[0]);
+                skeletalMeshComponent.SkeletalMesh.ProcessAssetContext(staticLODModelRef, ModelContext.Meshes.ToArray(), ModelContext.SkeletalContexts[0]);
+                skeletalMeshComponent.AnimScriptInstance.ProcessAnimationContext(ModelContext.AnimationContext);
 
-            testActor.AddActorComponent<H1SkeletalMeshComponent>(skeletalMeshComponent);
+                // generate skeletalmeshobject
+                skeletalMeshComponent.GenerateSkeleltalMeshObjectGpuSkin();
 
-            // add the actor to the world
-            m_World.PersistentLevel.AddActor(testActor);
+                testActor.AddActorComponent<H1SkeletalMeshComponent>(skeletalMeshComponent);
 
-            //@TODO - temporary force to order to working
-            // after load assets
-            m_Renderer.LoadAssets();
+                // add the actor to the world
+                m_World.PersistentLevel.AddActor(testActor);
+
+                //@TODO - temporary force to order to working
+                // after load assets
+                m_Renderer.LoadAssets();
+            }
 
             // @TODO - make the global accessor to access the current running app class!
             m_WPFInputManager = H1Global<H1InputManagerWpf>.Instance;

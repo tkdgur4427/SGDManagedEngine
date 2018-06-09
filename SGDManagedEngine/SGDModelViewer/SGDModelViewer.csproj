@@ -141,6 +141,10 @@
       <Project>{050fc659-553f-4911-a609-5ba1be4edbf8}</Project>
       <Name>Atf.Gui.Wpf.vs2010</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SGDManagedEngine\SGDManagedEngine.csproj">
+      <Project>{c23e4d54-274d-415d-86ac-dd71c364be47}</Project>
+      <Name>SGDManagedEngine</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SGDRayTracer\SGDRayTracer.csproj">
       <Project>{daf546d4-71d7-4771-be6a-43a35bf6f575}</Project>
       <Name>SGDRayTracer</Name>

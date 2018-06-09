@@ -248,11 +248,14 @@ namespace SGDManagedEngine.SGD
         {
             // record all the commands we need to render the scene into the command list
             //PopulateCommandLists();
-            PopulateCommandListsForSkeletalMesh();
+            //PopulateCommandListsForSkeletalMesh();
             //PopulateCommandListsForVisualDebugDrawing();
 
             // execute the command list
-            m_DeviceContext.MainCommandListPool.CommandQueue.ExecuteCommandList(m_CommandList.CommandList);
+            if (m_CommandList != null)
+            {
+                m_DeviceContext.MainCommandListPool.CommandQueue.ExecuteCommandList(m_CommandList.CommandList);
+            }            
 
             // swap the back and front buffers
             m_SwapChainDX12.SwapChain.Present(1, 0);

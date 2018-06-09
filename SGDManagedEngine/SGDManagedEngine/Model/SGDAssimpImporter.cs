@@ -22,7 +22,7 @@ namespace SGDManagedEngine.SGD
 
         public void Initialize()
         {
-            Load("special_alduindeathagony.fbx");
+            //Load("special_alduindeathagony.fbx");
             //Load("mitsuba-sphere.obj");           
         }
 

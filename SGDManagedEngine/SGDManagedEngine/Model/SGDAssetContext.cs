@@ -278,7 +278,12 @@ namespace SGDManagedEngine.SGD
 
         public H1ModelContext GetModel(int index)
         {
-            return m_Models[index];
+            if (m_Models.Count > 0)
+            {
+                return m_Models[index];
+            }
+
+            return null;
         }
 
         private readonly List<H1ModelContext> m_Models = new List<H1ModelContext>();
