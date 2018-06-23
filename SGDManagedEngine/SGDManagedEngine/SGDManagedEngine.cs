@@ -145,6 +145,9 @@ namespace SGDManagedEngine.SGD
 
             // @TODO - view projection matrix update
             m_Renderer.ViewProjectionMatrix = Matrix.Multiply(m_Camera.ViewMatrix, m_Camera.ProjectionMatrix);
+
+            // update physics engine
+            H1Global<Physics.Test.TestPhysicsSimulator>.Instance.Update();
         }
 
         private IntPtr m_WindowHandle;

@@ -219,12 +219,15 @@ namespace SGDManagedEngine.SGD
 
             m_ShaderManager = new H1ShaderManager();
             m_ShaderManager.Initialize(this);
-                                   
+
             // temp
             //m_TempStaticMesh = new H1StaticMesh(H1Global<H1AssimpImporter>.Instance.asset.GetModel(2));
-                        
+
             // load assets
-            //LoadAssets();            
+            //LoadAssets();
+
+            // setting for physics
+            SettingForPhysics();
         }
 
         public void Destroy()
@@ -246,10 +249,16 @@ namespace SGDManagedEngine.SGD
 
         public void Render()
         {
+            // set the thread local
+            Thread.H1ThreadGlobal.ThreadContext.RendererContext.CurrCommandList = m_CommandList;
+
             // record all the commands we need to render the scene into the command list
             //PopulateCommandLists();
             //PopulateCommandListsForSkeletalMesh();
-            //PopulateCommandListsForVisualDebugDrawing();
+            PopulateCommandListsForVisualDebugDrawing();
+
+            // reset the current command list
+            Thread.H1ThreadGlobal.ThreadContext.RendererContext.CurrCommandList = null;
 
             // execute the command list
             if (m_CommandList != null)
@@ -265,6 +274,122 @@ namespace SGDManagedEngine.SGD
 
             // reset visual debugger 
             H1Global<H1VisualDebugger>.Instance.ClearAllMeshBuilders();
+        }
+
+        public void SettingForPhysics()
+        {
+            //@TODO - temporary sampler
+            StaticSamplerDescription pointClamp = new StaticSamplerDescription(ShaderVisibility.Pixel, 0, 0);
+            pointClamp.Filter = Filter.ComparisonMinLinearMagMipPoint;
+            pointClamp.AddressU = TextureAddressMode.Clamp;
+            pointClamp.AddressV = TextureAddressMode.Clamp;
+            pointClamp.AddressW = TextureAddressMode.Clamp;
+
+            StaticSamplerDescription[] staticSamArray = new[] { pointClamp };
+
+            // create an empty root signature
+            var rootSignatureDesc = new RootSignatureDescription(RootSignatureFlags.AllowInputAssemblerInputLayout,
+                // root parameters
+                new[]
+                {
+                    new RootParameter(ShaderVisibility.Vertex,
+                    new DescriptorRange()
+                    {
+                        RangeType = DescriptorRangeType.ConstantBufferView,
+                        BaseShaderRegister = 0,
+                        OffsetInDescriptorsFromTableStart = 0,
+                        DescriptorCount = 1
+                    }),
+                    new RootParameter(ShaderVisibility.Pixel,
+                    new DescriptorRange()
+                    {
+                        RangeType = DescriptorRangeType.ShaderResourceView,
+                        BaseShaderRegister = 0,
+                        OffsetInDescriptorsFromTableStart = 0,
+                        DescriptorCount = 1
+                    })
+                }
+                , staticSamArray
+                );
+
+            m_RootSignature = Device.CreateRootSignature(rootSignatureDesc.Serialize());
+
+            // create the pipeline state, which includes compiling and loading shader
+            H1VertexFactoryType vertexFactoryType = ShaderManager.GetVertexFactoryType("H1LocalVertexFactory");
+            //H1VertexFactoryType vertexFactoryType = ShaderManager.GetVertexFactoryType("H1GpuSkinVertexFactory");
+#if DEBUG
+            //var vertexShader = new ShaderBytecode(SharpDX.D3DCompiler.ShaderBytecode.CompileFromFile("shader.hlsl", "VSMain", "vs_5_1", SharpDX.D3DCompiler.ShaderFlags.Debug));            
+            var vertexShader = H1Material.DefaultMaterial.MaterialResource.GetShader("H1BasePassVertexShader", vertexFactoryType).ShaderByteCode;
+#else
+            var vertexShader = H1Material.DefaultMaterial.MaterialResource.GetShader("H1BasePassVertexShader", vertexFactoryType).ShaderByteCode;
+#endif
+
+#if DEBUG
+            //var pixelShader = new ShaderBytecode(SharpDX.D3DCompiler.ShaderBytecode.CompileFromFile("shader.hlsl", "PSMain", "ps_5_1", SharpDX.D3DCompiler.ShaderFlags.Debug));
+            var pixelShader = H1Material.DefaultMaterial.MaterialResource.GetShader("H1BasePassPixelShader", vertexFactoryType).ShaderByteCode;
+#else
+            var pixelShader = H1Material.DefaultMaterial.MaterialResource.GetShader("H1BasePassPixelShader", vertexFactoryType).ShaderByteCode;
+#endif
+
+            // set the seperate rasterizerstatedesc
+            RasterizerStateDescription rasterizerStateDesc = RasterizerStateDescription.Default();
+            rasterizerStateDesc.FillMode = FillMode.Wireframe;
+            rasterizerStateDesc.CullMode = CullMode.None;
+            //rasterizerStateDesc.CullMode = CullMode.Front; //@TODO - what the fuck?!... need to solve this urgently~******
+            //rasterizerStateDesc.FillMode = FillMode.Solid;
+
+            Vector3 position = new Vector3();
+            Vector3 size = new Vector3(1, 1, 1);
+
+            H1RenderUtils.H1DynamicMeshBuilder meshBuilder = H1Global<H1VisualDebugger>.Instance.GetNewDynamicMeshBuilder();
+            {
+                meshBuilder.AddLine(new Vector4(position + size * new Vector3(1, 0, 0), 1), new Vector4(position - size * new Vector3(1, 0, 0), 1), new Vector4(1));
+                meshBuilder.AddLine(new Vector4(position + size * new Vector3(0, 1, 0), 1), new Vector4(position - size * new Vector3(0, 1, 0), 1), new Vector4(1));
+                meshBuilder.AddLine(new Vector4(position + size * new Vector3(0, 0, 1), 1), new Vector4(position - size * new Vector3(0, 0, 1), 1), new Vector4(1));
+            }
+
+            // generate vertex & index buffers and vertex declaration
+            meshBuilder.GenerateVertexIndexBuffersAndVertexDeclaration();
+
+            // describe and create the graphics pipeline state object (PSO)
+            var psoDesc = new GraphicsPipelineStateDescription()
+            {
+                InputLayout = meshBuilder.VertexFactory.VertexDeclaration.InputLayout.Description,
+                RootSignature = m_RootSignature,
+                VertexShader = vertexShader,
+                PixelShader = pixelShader,
+                RasterizerState = rasterizerStateDesc,
+                BlendState = BlendStateDescription.Default(),
+                DepthStencilFormat = SharpDX.DXGI.Format.D32_Float,
+                DepthStencilState = DepthStencilStateDescription.Default(),
+                //DepthStencilState = new DepthStencilStateDescription() { IsDepthEnabled = false, IsStencilEnabled = false },
+                SampleMask = int.MaxValue,
+                PrimitiveTopologyType = PrimitiveTopologyType.Triangle,
+                RenderTargetCount = 1,
+                Flags = PipelineStateFlags.None,
+                SampleDescription = new SharpDX.DXGI.SampleDescription(1, 0),
+                StreamOutput = new StreamOutputDescription()
+            };
+
+            psoDesc.RenderTargetFormats[0] = SharpDX.DXGI.Format.R8G8B8A8_UNorm;
+
+            m_PipelineState = Device.CreateGraphicsPipelineState(psoDesc);
+
+            // create the command list
+            m_CommandList = new Direct3D12.H1CommandList(m_DeviceContext.Dx12Device, m_DeviceContext.MainCommandListPool);
+            m_CommandList.Initialize();
+
+            // create the vertex buffer
+            float aspectRatio = m_Viewport.Width / m_Viewport.Height;
+
+            m_ConstantBuffer = Device.CreateCommittedResource(new HeapProperties(HeapType.Upload), HeapFlags.None, ResourceDescription.Buffer(1024 * 64), ResourceStates.GenericRead);
+
+            var cbvDesc = new ConstantBufferViewDescription
+            {
+                BufferLocation = m_ConstantBuffer.GPUVirtualAddress,
+                SizeInBytes = 256 * 256//(Utilities.SizeOf<TransformationCB>() + 255) & ~255
+            };
+            Device.CreateConstantBufferView(cbvDesc, m_ConstantBufferViewHeap.CPUDescriptorHandleForHeapStart);
         }
 
         public void LoadAssets()
@@ -665,8 +790,11 @@ namespace SGDManagedEngine.SGD
             //H1RenderUtils.DrawDashedLine(m_CommandList.CommandList, new Vector3(-1), new Vector3(1), 0.2f);
             //H1RenderUtils.DrawWireDiamond(m_CommandList.CommandList, Matrix.Identity, 0.2f);
 
-            H1SkeletalMeshComponent skeletalMeshComponent = H1Global<H1World>.Instance.PersistentLevel.GetActor(0).GetActorComponent<H1SkeletalMeshComponent>();
-            skeletalMeshComponent.SkeletalMesh.SkeletonDebugDrawing(m_CommandList.CommandList);
+            //H1SkeletalMeshComponent skeletalMeshComponent = H1Global<H1World>.Instance.PersistentLevel.GetActor(0).GetActorComponent<H1SkeletalMeshComponent>();
+            //skeletalMeshComponent.SkeletalMesh.SkeletonDebugDrawing(m_CommandList.CommandList);
+
+            // execute commands
+            H1Global<Commands.H1CommandManager>.Instance.ExecuteCommands();
 
             // use barrier to notify that we are going to present the render target            
             m_CommandList.CommandList.ResourceBarrierTransition(rtvBackBuffer, ResourceStates.RenderTarget, ResourceStates.Present);

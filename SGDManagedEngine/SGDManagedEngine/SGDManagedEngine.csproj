@@ -124,6 +124,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\H1Command.cs" />
+    <Compile Include="Commands\H1CommandManager.cs" />
+    <Compile Include="Commands\H1RenderCommand.cs" />
     <Compile Include="Debugger\SGDVisualDebugger.cs" />
     <Compile Include="InputManager\SGDInputManager.cs" />
     <Compile Include="InputManager\SGDKeys.cs" />
@@ -164,9 +167,11 @@
     <Compile Include="Object\SGDObject.cs" />
     <Compile Include="Object\SGDStaticMeshComponent.cs" />
     <Compile Include="Object\SGDTransform.cs" />
+    <Compile Include="Physics\Test\TestPhysicsSimulator.cs" />
     <Compile Include="Profiler\SGDInGameUIEditor.cs" />
     <Compile Include="Renderer\Camera\SGDCamera.cs" />
     <Compile Include="Renderer\Camera\SGDCameraController.cs" />
+    <Compile Include="Renderer\H1RendererContext.cs" />
     <Compile Include="Renderer\Renewal\SGDManagedRenderer.cs" />
     <Compile Include="Renderer\SGDGpuSkinVertexFactory.cs" />
     <Compile Include="Renderer\SGDRenderUtils.cs" />
@@ -266,6 +271,8 @@
     <Compile Include="SGDGlobal.cs" />
     <Compile Include="SGDManagedEngine.cs" />
     <Compile Include="Renderer\SGDManagedRenderer.cs" />
+    <Compile Include="Thread\H1ThreadContext.cs" />
+    <Compile Include="Thread\H1ThreadGlobal.cs" />
     <Compile Include="Utility\SGDDeepCopyable.cs" />
     <Compile Include="Utility\SGDObjectCopier.cs" />
     <Compile Include="World\Scene\SGDDepthPriorityGroup.cs" />
@@ -302,6 +309,14 @@
     <ProjectReference Include="..\SGDManagedEngineWrapper\SGDManagedEngineWrapper.vcxproj">
       <Project>{35f9df50-421f-4ffa-9636-5b4f75aa45d7}</Project>
       <Name>SGDManagedEngineWrapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SGDPhysicsEngine\SGDPhysicsEngine.csproj">
+      <Project>{afc9d468-26f0-4693-8ec0-ea8d53303f19}</Project>
+      <Name>SGDPhysicsEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SGDUtil\SGDUtil.csproj">
+      <Project>{9db98455-82a1-43e3-8342-9bcfce1f1233}</Project>
+      <Name>SGDUtil</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -39,8 +39,11 @@ namespace SGDManagedEngine.SGD
             for (Int32 index = 0; index < m_DebugDynamicMeshBuilders.Count; index++)
             {
                 // dispose unmanaged resource and nullify for next use
-                m_DebugDynamicMeshBuilders[index].Dispose();
-                m_DebugDynamicMeshBuilders[index] = null;
+                if (m_DebugDynamicMeshBuilders[index] != null)
+                {
+                    m_DebugDynamicMeshBuilders[index].Dispose();
+                    m_DebugDynamicMeshBuilders[index] = null;
+                }                
             }            
         }
 

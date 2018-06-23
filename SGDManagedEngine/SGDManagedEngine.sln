@@ -42,6 +42,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGDRayTracer", "SGDRayTrace
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGDUtil", "SGDUtil\SGDUtil.csproj", "{9DB98455-82A1-43E3-8342-9BCFCE1F1233}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGDPhysicsEngine", "SGDPhysicsEngine\SGDPhysicsEngine.csproj", "{AFC9D468-26F0-4693-8EC0-EA8D53303F19}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -200,6 +202,18 @@ Global
 		{9DB98455-82A1-43E3-8342-9BCFCE1F1233}.Release|x64.Build.0 = Release|Any CPU
 		{9DB98455-82A1-43E3-8342-9BCFCE1F1233}.Release|x86.ActiveCfg = Release|Any CPU
 		{9DB98455-82A1-43E3-8342-9BCFCE1F1233}.Release|x86.Build.0 = Release|Any CPU
+		{AFC9D468-26F0-4693-8EC0-EA8D53303F19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFC9D468-26F0-4693-8EC0-EA8D53303F19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFC9D468-26F0-4693-8EC0-EA8D53303F19}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AFC9D468-26F0-4693-8EC0-EA8D53303F19}.Debug|x64.Build.0 = Debug|Any CPU
+		{AFC9D468-26F0-4693-8EC0-EA8D53303F19}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AFC9D468-26F0-4693-8EC0-EA8D53303F19}.Debug|x86.Build.0 = Debug|Any CPU
+		{AFC9D468-26F0-4693-8EC0-EA8D53303F19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFC9D468-26F0-4693-8EC0-EA8D53303F19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFC9D468-26F0-4693-8EC0-EA8D53303F19}.Release|x64.ActiveCfg = Release|Any CPU
+		{AFC9D468-26F0-4693-8EC0-EA8D53303F19}.Release|x64.Build.0 = Release|Any CPU
+		{AFC9D468-26F0-4693-8EC0-EA8D53303F19}.Release|x86.ActiveCfg = Release|Any CPU
+		{AFC9D468-26F0-4693-8EC0-EA8D53303F19}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -8,6 +8,11 @@ using SharpDX;
 
 namespace SGDUtil
 {
+    public class H1Matrix3x3
+    {
+        public Matrix3x3 Data;
+    }
+
     public class H1Matrix
     {
         public H1Matrix()

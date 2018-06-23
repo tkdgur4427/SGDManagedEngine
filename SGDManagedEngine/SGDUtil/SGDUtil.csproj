@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -51,7 +52,9 @@
     <Compile Include="H1Matrix.cs" />
     <Compile Include="H1Plane.cs" />
     <Compile Include="H1PrimitiveIntersection.cs" />
+    <Compile Include="H1Quaternion.cs" />
     <Compile Include="H1Ray.cs" />
+    <Compile Include="H1ShapePrimitive.cs" />
     <Compile Include="H1Vector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

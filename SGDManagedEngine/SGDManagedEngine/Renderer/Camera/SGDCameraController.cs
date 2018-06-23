@@ -44,8 +44,8 @@ namespace SGDManagedEngine.SGD
                 // pitch - arbitrary axis X
                 Vector3 axisX = new Vector3(1.0f, 0.0f, 0.0f);
                 // @TODO - remove the gimbal lock ; currently, because of the gimbal lock problem, disable pitch matrix corresponding Yaxis delta value
-                Matrix pitchMatrix = Matrix.Identity;
-                //Matrix pitchMatrix = Matrix.RotationAxis(axisX, angleSize * mouseDelta.Y);
+                //Matrix pitchMatrix = Matrix.Identity;
+                Matrix pitchMatrix = Matrix.RotationAxis(axisX, angleSize * mouseDelta.Y);
 
                 Matrix finalMatrix = Matrix.Multiply(yawMatrix, pitchMatrix);
                 Vector4 result = Vector3.Transform(m_CameraRef.EyePosition, finalMatrix);

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DAF546D4-71D7-4771-BE6A-43A35BF6F575}</ProjectGuid>
+    <ProjectGuid>{AFC9D468-26F0-4693-8EC0-EA8D53303F19}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SGDRayTracer</RootNamespace>
-    <AssemblyName>SGDRayTracer</AssemblyName>
+    <RootNamespace>SGDPhysicsEngine</RootNamespace>
+    <AssemblyName>SGDPhysicsEngine</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -33,7 +33,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,13 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="H1CameraComponent.cs" />
-    <Compile Include="H1Component.cs" />
-    <Compile Include="H1CPURayTracer.cs" />
-    <Compile Include="H1Entity.cs" />
-    <Compile Include="H1RayTracer.cs" />
-    <Compile Include="H1RayTracerComponent.cs" />
-    <Compile Include="H1RayTracerSystem.cs" />
+    <Compile Include="H1CollisionPrimitive.cs" />
+    <Compile Include="H1RigidBody.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -57,5 +51,6 @@
       <Name>SGDUtil</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

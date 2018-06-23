@@ -145,6 +145,10 @@
       <Project>{c23e4d54-274d-415d-86ac-dd71c364be47}</Project>
       <Name>SGDManagedEngine</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SGDPhysicsEngine\SGDPhysicsEngine.csproj">
+      <Project>{afc9d468-26f0-4693-8ec0-ea8d53303f19}</Project>
+      <Name>SGDPhysicsEngine</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SGDRayTracer\SGDRayTracer.csproj">
       <Project>{daf546d4-71d7-4771-be6a-43a35bf6f575}</Project>
       <Name>SGDRayTracer</Name>
