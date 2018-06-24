@@ -41,7 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="H1CollisionData.cs" />
+    <Compile Include="H1CollisionDetector.cs" />
     <Compile Include="H1CollisionPrimitive.cs" />
+    <Compile Include="H1Contacts.cs" />
     <Compile Include="H1RigidBody.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -8,7 +8,7 @@ namespace SGDUtil
 {
     public class H1ShapePrimitive
     {
-        H1Matrix Transform;
+        public H1Matrix Transform;
     }
 
     public class H1Sphere : H1ShapePrimitive
@@ -16,7 +16,7 @@ namespace SGDUtil
         /// <summary>
         /// the radius of the sphere
         /// </summary>
-        float Radius;
+        public float Radius;
     }
 
     public class H1Box : H1ShapePrimitive
@@ -24,6 +24,6 @@ namespace SGDUtil
         /// <summary>
         /// holds the half-sizes of the box along each of its local axes
         /// </summary>
-        H1Vector3 HalfSize;
+        public H1Vector3 HalfSize;
     }
 }

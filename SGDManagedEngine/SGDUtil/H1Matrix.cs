@@ -52,6 +52,26 @@ namespace SGDUtil
             }
         }
 
+        public H1Vector3 Axis0
+        {
+            get { return new H1Vector3(Data.Column1[0], Data.Column1[1], Data.Column1[2]); }
+        }
+
+        public H1Vector3 Axis1
+        {
+            get { return new H1Vector3(Data.Column2[0], Data.Column2[1], Data.Column2[2]); }
+        }
+
+        public H1Vector3 Axis2
+        {
+            get { return new H1Vector3(Data.Column3[0], Data.Column3[1], Data.Column3[2]); }
+        }
+
+        public H1Vector3 Axis3
+        {
+            get { return new H1Vector3(Data.Column4[0], Data.Column4[1], Data.Column4[2]); }
+        }
+
         public H1Vector3 TranslationVector
         {
             get { return new H1Vector3(Data.TranslationVector); }

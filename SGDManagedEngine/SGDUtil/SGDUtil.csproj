@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="H1Bound.cs" />
+    <Compile Include="H1CollisionDetection.cs" />
     <Compile Include="H1Color.cs" />
     <Compile Include="H1Matrix.cs" />
     <Compile Include="H1Plane.cs" />

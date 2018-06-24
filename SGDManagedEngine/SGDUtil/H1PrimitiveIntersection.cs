@@ -64,5 +64,27 @@ namespace SGDUtil
 
             return true;
         }
+
+        public static float TransformToAxis(H1Box InBox, H1Vector3 InAxis)
+        {
+            // think of quater-box (halfsize) end point projecting to InAxis
+            // which gives maximum distance(by math.abs) toward axis from box
+            return InBox.HalfSize.X * Math.Abs(H1Vector3.Dot(InAxis, InBox.Transform.Axis0))
+                + InBox.HalfSize.Y * Math.Abs(H1Vector3.Dot(InAxis, InBox.Transform.Axis1))
+                + InBox.HalfSize.Z * Math.Abs(H1Vector3.Dot(InAxis, InBox.Transform.Axis2));
+        }
+
+        public static bool Intersect(H1Box InBox, H1Plane InPlane)
+        {
+            // work out the projected radius of the box onto the plane direction
+            float ProjectedRadius = TransformToAxis(InBox, InPlane.Normal);
+
+            // work out how far the box is from the origin
+            H1Vector3 BoxPosition = InBox.Transform.Axis3;
+            float BoxDistance = H1Vector3.Dot(InPlane.Normal, BoxPosition) - ProjectedRadius;
+
+            // check for the intersection
+            return BoxDistance <= InPlane.Distance;
+        }
     }
 }

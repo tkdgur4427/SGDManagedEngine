@@ -775,7 +775,7 @@ namespace SGDManagedEngine.SGD
             //H1RenderUtils.DrawCone(m_CommandList.CommandList, angle1.Radians, angle1.Radians, 24, false, new Vector4(1));
             //H1RenderUtils.DrawCylinder(m_CommandList.CommandList, new Vector3(0, 0, 0), new Vector3(1, 0, 0), new Vector3(0, 1, 0), new Vector3(0, 0, 1), 1, 3, 10);
             //H1RenderUtils.DrawCapsule(m_CommandList.CommandList, new Vector3(0, 0, 0), new Vector3(1, 0, 0), new Vector3(0, 1, 0), new Vector3(0, 0, 1), 1, 3, 10);
-            //H1RenderUtils.DrawDisc(m_CommandList.CommandList, new Vector3(0), new Vector3(1, 0, 0), new Vector3(0, 1, 0), 1, 10);
+            H1RenderUtils.DrawDisc(m_CommandList.CommandList, new Vector3(0), new Vector3(1, 0, 0), new Vector3(0, 1, 0), 1, 10);
             //H1RenderUtils.DrawFlatArrow(m_CommandList.CommandList, new Vector3(0), new Vector3(1, 0, 0), new Vector3(0, 1, 0), 10, 1, 0.1f);
             //H1RenderUtils.DrawWireBox(m_CommandList.CommandList, Matrix.Identity, new Vector3(-1, -1, -1), new Vector3(1), 1, 0, 0);
             //H1RenderUtils.DrawWireSphere(m_CommandList.CommandList, new Vector3(0), 2.0f, 24);
